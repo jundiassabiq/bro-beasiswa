@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/sesi.php';
 function awalHalaman(string $title): void { ?>
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?= e($title) ?> · BroBeasiswa</title><meta name="theme-color" content="#eafaff"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css?v=bro-20261011-1"><script src="assets/app.js?v=bro-20261011-1" defer></script></head><body>
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?= e($title) ?> · BroBeasiswa</title><meta name="theme-color" content="#eafaff"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css?v=bro-20261011-3"><script src="assets/app.js?v=bro-20261011-3" defer></script></head><body>
 <a class="skip" href="#konten">Lewati ke konten</a>
 <header class="site-header container"><nav class="navbar" aria-label="Navigasi utama"><a class="brand" href="index.php"><span class="brand-mark" aria-hidden="true">↗</span><span>BroBeasiswa<span class="brand-dot">.</span></span></a><div class="nav-links">
 <?php if (loginAktif()): ?><a class="nav-link" href="daftar.php">Informasi</a><?php if (adminAktif()): ?><a class="button small" href="tambah.php">Tambah <span aria-hidden="true">+</span></a><?php endif; ?><span class="user-label"><?= e($_SESSION['nama']) ?><span class="role-label"><?= e($_SESSION['peran']) ?></span></span><form action="logout.php" method="post"><?php csrfField(); ?><button class="nav-link logout" type="submit">Keluar <span aria-hidden="true">↗</span></button></form>
