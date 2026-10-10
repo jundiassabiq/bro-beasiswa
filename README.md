@@ -126,29 +126,4 @@ bank-informasi/
 └── README.md
 ```
 
-## Pengujian terakhir
-
-Pengujian dilakukan pada **11 Oktober 2026** dengan database QA terpisah, termasuk instalasi dari `app.sql` pada database baru. Data aplikasi utama tidak digunakan untuk percobaan Create.
-
-- 39 pemeriksaan HTTP untuk autentikasi, validasi, akses admin, CSRF, escaping XSS, ID detail, deadline, logout, formulir tanpa JavaScript, dan kegagalan koneksi.
-- 17 pemeriksaan HTTP untuk pencarian, sorting, pagination, parameter tidak valid, dan batas 100 info.
-- 19 pemeriksaan tambahan, termasuk info baru dengan deadline jauh, akses anggota, validasi sandi, input pencarian berbahaya, dan header keamanan.
-- 8 pemeriksaan Apache untuk ketersediaan halaman/aset dan pembatasan akses berkas SQL serta dokumen.
-- Pemeriksaan sintaks seluruh file PHP dan pengujian stabilitas merge sort serta pencarian Unicode.
-
-Seluruh **83 pemeriksaan HTTP** tersebut lulus. Informasi baru dengan deadline jauh yang sebelumnya tidak masuk katalog sudah diperbaiki. Tampilan dan interaksi browser diperiksa pada viewport 390, 768, dan 1280 piksel, termasuk fokus keyboard, kolom formulir sesuai jenis, penyimpanan melalui browser, dan pengganti poster yang gagal dimuat.
-
-## Jika aplikasi belum berjalan
-
-| Masalah | Yang perlu diperiksa |
-| --- | --- |
-| URL tidak terbuka | Apache sudah berjalan; port dan lokasi folder sesuai. Buka lewat `http://localhost/`, bukan dengan klik langsung file PHP. |
-| Halaman 404 | `index.php` berada langsung di `htdocs\bank-informasi`, bukan di subfolder tambahan. |
-| Layanan sementara tidak tersedia | MySQL aktif, `app.sql` berhasil diimpor, dan kredensial `config.php` benar. Periksa `C:\xampp\apache\logs\error.log` untuk detail. |
-| Error tabel sudah ada saat impor | Gunakan database baru untuk instalasi terpisah; jangan menimpa database yang masih dipakai. |
-| Fungsi `mb_*` atau `mysqli` tidak ditemukan | Aktifkan ekstensi terkait di `C:\xampp\php\php.ini`, lalu restart Apache. |
-| Login akun demo gagal | Periksa username/sandi pada tabel di atas dan pastikan data akun dari `app.sql` sudah masuk. |
-| Poster tidak muncul | Periksa internet. Ilustrasi lokal menjadi pengganti jika poster sumber gagal dimuat. |
-| Hasil pencarian kosong | Coba nama kampus, jenis informasi, atau sebagian judul. Pencarian dibatasi isi katalog 100 info. |
-
 Tautan eksternal dan ketentuan program mengikuti situs sumber. Selalu periksa sumber sebelum mendaftar.
